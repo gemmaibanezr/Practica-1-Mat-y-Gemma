@@ -1,0 +1,20 @@
+/* FUENTE GOOGLEFONTS */
+.zen-dots-regular {
+  font-family: "Zen Dots", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* PROPIEDADES GENERALES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Zen Dots", sans-serif;
+  background: #f2cce2;
+  color: #333;
+}
