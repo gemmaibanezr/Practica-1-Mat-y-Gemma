@@ -13,19 +13,19 @@
   box-sizing: border-box;
 }
 
-/* body {
+ body {
   font-family: "Zen Dots", sans-serif;
  background-color: #000;
   background-image: 
     radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 40%),
     radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 40%),
-    url('textura-reflejos.png'); /* imagen opcional 
+    url('https://cdn.cosmos.so/d1bef360-5c84-4b3d-a9a1-67dbc4204279?format=jpeg'); 
   background-size: cover;
   background-blend-mode: screen;
   color: white;
-}*/
+}
 
-body {
+/*body {
   margin: 0;
   background: #000;
   overflow-x: hidden;
