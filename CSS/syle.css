@@ -21,18 +21,27 @@ html, body {
 }
 
 /* FONDO Y COLOR BASE DEL SITIO */
-body {
-  background-color: #000;
-  background-image: 
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 40%),
-    url('https://cdn.cosmos.so/d57143c1-fdbc-4b7e-9a98-ae4d80af6cb5?format=jpeg'); 
-  background-size: cover;
-  background-blend-mode: screen;
-  color: white;
-  cursor: none; /* Oculta el cursor original */
+body:not(.login-page) {
+    height: 100%;
+    margin: 0;
+    font-family: "Zen Dots", sans-serif;
+    color: white;
+    cursor: none;
 
+    /* Imagen de fondo con gradientes encima */
+    background-image: 
+        url('https://cdn.cosmos.so/d57143c1-fdbc-4b7e-9a98-ae4d80af6cb5?format=jpeg'),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.03), transparent 40%);
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;   /* Mantiene la imagen fija al hacer scroll */
+    background-blend-mode: overlay; /* Mezcla gradientes suavemente */
 }
+
+
 
 #cursor {
     position: fixed;
@@ -125,12 +134,12 @@ body {
 
 /* Fondo y disposición general del login */
 body.login-page {
-  background-color: #f5f5f5;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 0;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    cursor: none; /* Mantiene el cursor personalizado si quieres */
 }
 
 /* Contenedor principal del formulario */
@@ -200,7 +209,6 @@ body.login-page {
 
 /* FOOTER */
 .footer {
-  background: #000;
   color: white;
   text-align: center;
   padding: 20px 10px;
