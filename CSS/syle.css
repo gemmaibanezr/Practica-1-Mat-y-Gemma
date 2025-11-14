@@ -30,6 +30,24 @@ body {
   background-size: cover;
   background-blend-mode: screen;
   color: white;
+  cursor: none; /* Oculta el cursor original */
+
+}
+
+#cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff0088 0%, #00aaff 100%);
+    transform: translate(-50%, -50%);
+    filter: blur(6px);              /* Da el efecto difuso */
+    opacity: 0.8;                   /* Lo hace más suave */
+    box-shadow: 0 0 20px #ff0088, 
+                0 0 25px #00aaff;   /* Aura suave */
+    transition: transform 0.05s linear;
+    z-index: 9999;
 }
 
 /* MENÚ RESPONSIVE */
@@ -85,9 +103,9 @@ body {
 }
 
 /* Hover colores individuales */
-.nav-menu li:nth-child(1) a:hover { color: #ff4dd2; } /* +danza */
-.nav-menu li:nth-child(2) a:hover { color: #4db8ff; } /* +música */
-.nav-menu li:nth-child(3) a:hover { color: #7dff4d; } /* +teatro */
+.nav-menu li:nth-child(1) a:hover { color: #FF6037; } /* +danza */
+.nav-menu li:nth-child(2) a:hover { color: #F82524; } /* +música */
+.nav-menu li:nth-child(3) a:hover { color: #ECECDC; } /* +teatro */
 .nav-menu li:nth-child(4) a:hover { color: #ffcc00; } /* Iniciar sesión */
 
 .hamburger-menu {
@@ -172,6 +190,12 @@ body.login-page {
   font-size: 0.9rem;
   color: #666;
 }
+
+
+/* TARJETA DANZA */
+
+
+
 
 
 /* FOOTER */
