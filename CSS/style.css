@@ -1,12 +1,8 @@
-/* IMPORTACIÓN DE FUENTES GOOGLE FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
-
 .zen-dots-regular {
   font-family: "Zen Dots", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
 
 /* PROPIEDADES GENERALES */
 * {
@@ -44,8 +40,6 @@ body:not(.login-page) {
     background-blend-mode: overlay; /* Mezcla gradientes suavemente */
 }
 
-
-
 #cursor {
     position: fixed;
     width: 40px;
@@ -74,8 +68,6 @@ body:not(.login-page) {
   z-index: 1000;
 }
 
-
-
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -92,12 +84,14 @@ body:not(.login-page) {
 }
 
 .nav-menu {
+  font-family: "Zen Dots", sans-serif;
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
 }
 
 .nav-menu ul {
+  font-family: "Zen Dots", sans-serif;
   display: flex;
   gap: 30px;
   list-style: none;
@@ -106,6 +100,7 @@ body:not(.login-page) {
 }
 
 .nav-menu a {
+  font-family: "Zen Dots", sans-serif !important;
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
@@ -141,6 +136,7 @@ body:not(.login-page) {
 /* Fondo y disposición general del login */
 body.login-page {
     background-color: #000000;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,7 +146,7 @@ body.login-page {
 
 /* Contenedor principal del formulario */
 .form-signin {
-  max-width: 330px;
+  max-width: 330px !important;
   padding: 15px;
 }
 
@@ -203,7 +199,7 @@ body.login-page {
 .form-signin p {
   text-align: center;
   font-size: 0.9rem;
-  color: #666;
+  color: #ffffff  !important;
 }
 
 
@@ -254,7 +250,7 @@ main {
   line-height: 1.4;
 }
 
-/* Responsivo */
+/* Responsive */
 @media (max-width: 768px) {
   .main-tarjetas {
     flex-direction: column;
@@ -263,13 +259,85 @@ main {
   }
 }
 
+/* MÚSICA */
+/* Contenedor de todas las tarjetas */
+.contenedor-eventos {
+  display: flex;
+  flex-direction: column; /* apila tarjetas verticalmente */
+  gap: 30px;              /* espacio entre tarjetas */
+  width: 100%;
+  padding: 0 20px;        /* respiración lateral */
+  margin: 140px;
+  box-sizing: border-box;
+  align-items: center;    /* centra tarjetas horizontalmente */
+}
+
+/* Tarjeta principal */
+.evento-musica {
+  background: rgba(255, 96, 55, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 1500px;      /* ancho máximo */
+  box-shadow: 0 5px 15px rgba(255, 96, 55, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-musica:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 96, 55, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+/* Título y artista arriba de la tarjeta */
+.evento-titulo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.evento-artista,
+.evento-gira {
+  margin: 3px 0;
+  font-size: 1rem;
+}
+
+/* Recuadro de detalles dentro de la tarjeta */
+.evento-detalles {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Texto dentro del recuadro */
+.evento-detalles p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* Responsive: en pantallas pequeñas */
+@media (max-width: 768px) {
+  .evento-musica {
+    width: 100%; /* ocupa todo el ancho disponible */
+    padding: 15px;
+  }
+
+  .evento-detalles {
+    padding: 10px 15px;
+  }
+}
 
 
 
 
 /* FOOTER */
 .footer {
-  color: white;
+  color: white  !important;
   text-align: center;
   padding: 20px 10px;
 }

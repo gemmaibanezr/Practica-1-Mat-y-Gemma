@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Iniciar sesión · +cultura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link 
@@ -13,19 +14,20 @@
     />
 
     <!-- Tu CSS personalizado -->
-    <link rel="stylesheet" href="CSS/syle.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
   </head>
 
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+<body class="login-page">
     <div id="cursor"></div>
     <main class="form-signin w-100 m-auto">
       <form>
         <img
-          class="mb-4"
+          class="mb-4 mx-auto d-block"
           src="media/img/logo +cultura-02.png"
           alt="Logo +cultura"
-          width="72"
-          height="72"
+          width="200"
+          height="144"
+          text-align=center
         />
         <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
 
@@ -76,13 +78,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
       crossorigin="anonymous">
     </script>
-    <script>
-const cursor = document.getElementById("cursor");
-
-document.addEventListener("mousemove", e => {
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-});
-</script>
+    <script src="js/script.js"></script>
   </body>
 </html>
