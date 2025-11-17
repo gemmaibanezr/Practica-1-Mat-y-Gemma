@@ -276,11 +276,10 @@ header, .header, nav, .navbar {
   margin: 40px auto;
   padding: 0 16px;
   position: relative;
-  margin-top: 440px !important;
+  margin-top: 250px !important;
   z-index: 1;
+  gap: 16px;
 }
-
-
 
 /* Grid responsiva: 2 columnas en desktop, 1 en mobile */
 .eventos-grid {
@@ -288,11 +287,7 @@ header, .header, nav, .navbar {
   grid-template-columns: 1fr;
   gap: 16px;
 }
-@media(min-width: 900px) {
-  .eventos-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+
 
 
 /* Card */
@@ -323,15 +318,15 @@ header, .header, nav, .navbar {
 }
 .evento-header h3 {
   margin: 0;
-  font-family: "Zen Dots", sans-serif;
-  font-size: 1rem;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.5rem;
   color: #fff;
   line-height: 1.1;
 }
 .evento-toggle-indicator {
   margin-left: auto;
   font-size: 1.25rem;
-  color: #ffb3dd;
+  color: rgba(255, 96, 55);
 }
 
 /* Contenido inicialmente cerrado */
@@ -339,7 +334,7 @@ header, .header, nav, .navbar {
   height: 0;
   opacity: 0;
   overflow: hidden;
-  padding: 0 16px; /* horizontal padding */
+  padding: 0; /* horizontal padding */
 }
 
 /* Inner content layout */
@@ -362,7 +357,7 @@ header, .header, nav, .navbar {
 /* Texto */
 .evento-texto {
   color: rgba(255,255,255,0.92);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   line-height: 1.4;
 }
 
@@ -387,6 +382,11 @@ header, .header, nav, .navbar {
   background: linear-gradient(90deg, rgba(255,77,210,0.09), rgba(255,96,55,0.06));
 }
 
+/* Intenta contrarrestar el movimiento de la grilla */
+.evento-card.open {
+  margin-bottom: 5px !important;
+}
+
 /* Pequeños ajustes visuales */
 .evento-header:focus {
   outline: 3px solid rgba(255,96,55,0.18);
@@ -398,6 +398,7 @@ header, .header, nav, .navbar {
   color: white  !important;
   text-align: center;
   padding: 20px 10px;
+  margin: 300px;
 }
 
 

@@ -1,6 +1,6 @@
-// Espera a que el DOM esté cargado
+// Espera a que el DOM esté cargado y ejecuta todas las inicializaciones
 document.addEventListener("DOMContentLoaded", () => {
-
+    
   // --- HAMBURGER TOGGLE ---
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('menu-overlay');
@@ -26,24 +26,24 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", function (e) {
       e.preventDefault(); // Evita que el formulario haga submit real
 
-      // Obtener valores de los campos
       const email = form.querySelector("#floatingInput").value.trim();
       const password = form.querySelector("#floatingPassword").value.trim();
 
-      // Validación simple
       if (!email || !password) {
         alert("Por favor completa todos los campos.");
         return;
       }
 
-      // Redirección al index.html
       window.location.href = "./index.html";
     });
   }
+  
+  // pequeño retardo para asegurar que todo está en DOM y CSS cargado
+  setTimeout(setupEventos, 50);
 
 });
 
-// GSAP
+// GSAP - LÓGICA DE ACORDEÓN 
 
 function setupEventos() {
   const cards = Array.from(document.querySelectorAll(".evento-card"));
@@ -57,7 +57,7 @@ function setupEventos() {
 
     // Si está en auto, tomamos altura actual para animar desde ahí
     const currentH = content.scrollHeight;
-    content.style.height = currentH + "px";
+    content.style.height = currentH + "px"; // Se mantiene: prepara el punto de partida
 
     gsap.killTweensOf(content);
     gsap.to(content, {
@@ -122,14 +122,17 @@ function setupEventos() {
 
   cards.forEach(card => {
     const header = card.querySelector(".evento-header");
-    // robustez: si header está dentro de un enlace o algo, aún así previene
+    
     const toggle = (e) => {
-      // evita click fantasmas (ej. si un child captura)
-      e && e.preventDefault && e.preventDefault();
+      e && e.preventDefault && e.preventDefault(); // Prevenir acción por defecto
+      
+      // CLAVE: Detener la propagación del evento para evitar eventos fantasmas
+      e && e.stopPropagation && e.stopPropagation(); 
 
       if (card.classList.contains("open")) closeCard(card);
       else openCard(card);
     };
+    
     header.addEventListener("click", toggle);
     header.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
@@ -139,8 +142,3 @@ function setupEventos() {
     });
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  // pequeño retardo para asegurar que todo está en DOM y CSS cargado
-  setTimeout(setupEventos, 50);
-});
