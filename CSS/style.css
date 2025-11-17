@@ -4,6 +4,8 @@
   font-style: normal;
 }
 
+:root { --site-header-height: 80px; }
+
 /* PROPIEDADES GENERALES */
 * {
   margin: 0;
@@ -23,7 +25,7 @@ html, body {
 body:not(.login-page) {
     height: 100%;
     margin: 0;
-    font-family: "Zen Dots", sans-serif;
+    font-family: "Helvetica", sans-serif;
     color: white;
     cursor: none;
 
@@ -65,7 +67,8 @@ body:not(.login-page) {
   height: 80px; /* ajusta según tu diseño real */
   background: #000;
   color: white;
-  z-index: 1000;
+  z-index: 1200;
+  right: 0;
 }
 
 .header-top {
@@ -260,80 +263,135 @@ main {
 }
 
 /* MÚSICA */
-/* Contenedor de todas las tarjetas */
-.contenedor-eventos {
-  display: flex;
-  flex-direction: column; /* apila tarjetas verticalmente */
-  gap: 30px;              /* espacio entre tarjetas */
-  width: 100%;
-  padding: 0 20px;        /* respiración lateral */
-  margin: 140px;
-  box-sizing: border-box;
-  align-items: center;    /* centra tarjetas horizontalmente */
+
+header, .header, nav, .navbar {
+  height: auto !important;
+  min-height: auto !important;
+  pointer-events: auto !important; 
 }
 
-/* Tarjeta principal */
-.evento-musica {
-  background: rgba(255, 96, 55, 0.85);
-  backdrop-filter: blur(4px);
-  border-radius: 20px;
-  padding: 25px 30px;
-  width: 1500px;      /* ancho máximo */
-  box-shadow: 0 5px 15px rgba(255, 96, 55, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Contenedor general */
+.eventos-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 16px;
+  position: relative;
+  margin-top: 440px !important;
+  z-index: 1;
 }
 
-.evento-musica:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(255, 96, 55, 0.5);
-  backdrop-filter: blur(8px);
+
+
+/* Grid responsiva: 2 columnas en desktop, 1 en mobile */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media(min-width: 900px) {
+  .eventos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-/* Título y artista arriba de la tarjeta */
-.evento-titulo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
 
-.evento-artista,
-.evento-gira {
-  margin: 3px 0;
-  font-size: 1rem;
-}
-
-/* Recuadro de detalles dentro de la tarjeta */
-.evento-detalles {
-  background: rgba(0, 0, 0, 0.3);
+/* Card */
+.evento-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
-  padding: 15px 20px;
-  margin-top: 15px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform .18s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  position: relative; 
+  z-index: 1;
+}
+.evento-card:hover { transform: translateY(-4px); }
+
+/* Header (actúa como botón) */
+.evento-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  user-select: none;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(90deg, rgba(255,77,210,0.04), rgba(255,96,55,0.03));
+}
+.evento-header h3 {
+  margin: 0;
+  font-family: "Zen Dots", sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.1;
+}
+.evento-toggle-indicator {
+  margin-left: auto;
+  font-size: 1.25rem;
+  color: #ffb3dd;
+}
+
+/* Contenido inicialmente cerrado */
+.evento-contenido {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 16px; /* horizontal padding */
+}
+
+/* Inner content layout */
+.evento-inner {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
+  padding: 16px 0 20px 0;
 }
 
-/* Texto dentro del recuadro */
-.evento-detalles p {
-  margin: 0;
+/* Imagen cuadrada */
+.evento-img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* fuerza formato cuadrado */
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Texto */
+.evento-texto {
+  color: rgba(255,255,255,0.92);
   font-size: 0.95rem;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
-/* Responsive: en pantallas pequeñas */
-@media (max-width: 768px) {
-  .evento-musica {
-    width: 100%; /* ocupa todo el ancho disponible */
-    padding: 15px;
-  }
-
-  .evento-detalles {
-    padding: 10px 15px;
-  }
+/* Video (responsive) */
+.evento-video {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.evento-video iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+@media (max-width: 600px) {
+  .evento-video iframe { height: 220px; }
 }
 
+/* Estado abierto (añadido solo para estilo; la altura la maneja GSAP) */
+.evento-card.open .evento-header {
+  background: linear-gradient(90deg, rgba(255,77,210,0.09), rgba(255,96,55,0.06));
+}
 
-
+/* Pequeños ajustes visuales */
+.evento-header:focus {
+  outline: 3px solid rgba(255,96,55,0.18);
+  outline-offset: 2px;
+}
 
 /* FOOTER */
 .footer {
