@@ -360,6 +360,14 @@ header, .header, nav, .navbar {
   color: rgba(255,255,255,0.92);
   font-size: 1.2rem;
   line-height: 1.4;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: block; 
+}
+
+.evento-texto:hover {
+    color: rgba(255, 95, 55, 0.7);
+    transform: scale(1.005) translateY(-1px); 
+    cursor: default;
 }
 
 /* Video (responsive) */
@@ -398,10 +406,11 @@ header, .header, nav, .navbar {
     display: grid; 
     grid-template-columns: 1fr 2fr;    
     gap: 20px;
-    padding: 0.5rem;
+    padding: 1.2rem;
     line-height: 1.8;
     text-align: justify;
 }
+
 
 
 /* FOOTER */
