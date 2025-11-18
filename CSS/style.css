@@ -206,44 +206,73 @@ body.login-page {
 }
 
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 50px;
+}
+
 /* Tarjetas */
 
 .card {
-    width: 260px;
-    padding: 40px 30px;
-    border-radius: 25px;
-    color: white;
+    width: 330px;                 /* MÁS GRANDE */
+    padding: 55px 40px;           /* MÁS GRANDE */
+    border-radius: 28px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(3px);
+
+    color: white;
+
+    /* EFECTO GLASS */
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+
+    transition: all 0.35s ease;
+}
+
+/* Hover con borde brillante */
+.card:hover {
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.55);
+    transform: scale(1.03);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    padding-top: 120px;
+}
+
+/* Alineación específica por tarjeta */
+
+.danza {
+    align-self: flex-end;
+    background-color: rgba(168, 72, 42, 0.40);  /* más transparente */
+}
+
+.musica {
+    align-self: center;
+    background-color: rgba(166, 44, 36, 0.40);
+}
+
+.teatro {
+    align-self: flex-start;
+    background-color: rgba(156, 159, 150, 0.40);
 }
 
 .card span {
-    font-size: 55px;
+    font-size: 65px;     /* Un poco más grande */
     margin-bottom: 10px;
     line-height: 1;
 }
 
 .title {
-    font-size: 32px;
+    font-size: 38px;     /* Un poco más grande */
     letter-spacing: 3px;
     font-weight: 600;
-}
-
-/* Colores similares al diseño original */
-
-.danza {
-    background-color: rgba(168, 72, 42, 0.85);
-}
-
-.musica {
-    background-color: rgba(166, 44, 36, 0.85);
-}
-
-.teatro {
-    background-color: rgba(156, 159, 150, 0.85);
 }
 
 /* MÚSICA */
