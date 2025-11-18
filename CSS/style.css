@@ -206,60 +206,44 @@ body.login-page {
 }
 
 
-/* MAIN */
-main {
-  flex: 1;            /* ocupa todo el espacio restante */
-  padding-top: 80px;  /* igual a la altura del header */
-}
+/* Tarjetas */
 
-/* Contenedor principal de las tarjetas */
-.main-tarjetas {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 80px 20px; /* separación del header y laterales */
-  flex-wrap: wrap;    /* se adapta a pantallas pequeñas */
-}
-
-/* Tarjetas individuales */
-.tarjeta {
-  background: rgba(255, 96, 55, 0.85); /* color #FF6037 semi-transparente */
-  backdrop-filter: blur(4px);          /* difuminado suave */
-  border-radius: 20px;
-  box-shadow: 0 5px 15px rgba(255, 96, 55, 0.3);
-  padding: 30px 20px;
-  width: 250px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-}
-
-/* Hover: brillo y difuminado más intenso */
-.tarjeta:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 96, 55, 0.5);
-  backdrop-filter: blur(8px);
-}
-
-/* Titulos y párrafos */
-.tarjeta h3 {
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-}
-
-.tarjeta p {
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main-tarjetas {
+.card {
+    width: 260px;
+    padding: 40px 30px;
+    border-radius: 25px;
+    color: white;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-  }
+    backdrop-filter: blur(3px);
+}
+
+.card span {
+    font-size: 55px;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.title {
+    font-size: 32px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+/* Colores similares al diseño original */
+
+.danza {
+    background-color: rgba(168, 72, 42, 0.85);
+}
+
+.musica {
+    background-color: rgba(166, 44, 36, 0.85);
+}
+
+.teatro {
+    background-color: rgba(156, 159, 150, 0.85);
 }
 
 /* MÚSICA */
