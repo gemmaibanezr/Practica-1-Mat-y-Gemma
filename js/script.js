@@ -1,33 +1,35 @@
-// Espera a que el DOM esté cargado y ejecuta todas las inicializaciones
-document.addEventListener("DOMContentLoaded", () => {
+// Espera a que el DOM esté completamente cargado 
+$(document).ready(function() {
     
   // --- HAMBURGER TOGGLE ---
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menu-overlay');
+  const $hamburger = $('#hamburger');
+  const $menu = $('#menu-overlay');
 
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.classList.toggle('active');
+  if ($hamburger.length && $menu.length) {
+    $hamburger.on('click', function() {
+      $menu.toggleClass('active');
     });
   }
 
   // --- CURSOR DEGRADADO ---
-  const cursor = document.getElementById("cursor");
-  if (cursor) {
-    document.addEventListener("mousemove", e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+  const $cursor = $("#cursor");
+  if ($cursor.length) {
+    $(document).on("mousemove", function(e) {
+      $cursor.css({
+        left: e.clientX,
+        top: e.clientY
+      });
     });
   }
 
   // --- FORMULARIO LOGIN ---
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita que el formulario haga submit real
+  const $form = $("form");
+  if ($form.length) {
+    $form.on("submit", function (e) {
+      e.preventDefault();
 
-      const email = form.querySelector("#floatingInput").value.trim();
-      const password = form.querySelector("#floatingPassword").value.trim();
+      const email = $form.find("#floatingInput").val().trim();
+      const password = $form.find("#floatingPassword").val().trim();
 
       if (!email || !password) {
         alert("Por favor completa todos los campos.");
@@ -46,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // GSAP - LÓGICA DE ACORDEÓN 
 
 function setupEventos() {
-  const cards = Array.from(document.querySelectorAll(".evento-card"));
-
+  const cards = $(".evento-card").get(); 
+  
   function closeCard(card) {
     const content = card.querySelector(".evento-contenido");
     const header = card.querySelector(".evento-header");
@@ -55,9 +57,9 @@ function setupEventos() {
     content.setAttribute("aria-hidden", "true");
     card.classList.remove("open");
 
-    // Si está en auto, tomamos altura actual para animar desde ahí
+    // Lógica para medir altura actual y animar desde ahí
     const currentH = content.scrollHeight;
-    content.style.height = currentH + "px"; // Se mantiene: prepara el punto de partida
+    content.style.height = currentH + "px"; 
 
     gsap.killTweensOf(content);
     gsap.to(content, {
@@ -66,7 +68,6 @@ function setupEventos() {
       duration: 0.45,
       ease: "power2.inOut",
       onComplete: () => {
-        // limpiar inline style cuando termine
         content.style.height = "";
       }
     });
@@ -82,15 +83,15 @@ function setupEventos() {
     content.setAttribute("aria-hidden", "false");
     card.classList.add("open");
 
-    // cerrar otros cards (si quieres solo 1 abierto)
+    // Cerrar otros cards
     cards.forEach(c => {
       if (c !== card && c.classList.contains("open")) closeCard(c);
     });
 
-    // Medimos altura real: forzamos auto temporalmente para obtener scrollHeight
+    // Medición de altura: forzamos auto para obtener scrollHeight, luego animamos desde 0
     content.style.height = "auto";
     const targetH = content.scrollHeight;
-    content.style.height = "0px"; // volver a 0 para animar desde 0
+    content.style.height = "0px"; 
 
     gsap.killTweensOf(content);
     gsap.to(content, {
@@ -99,14 +100,14 @@ function setupEventos() {
       duration: 0.6,
       ease: "power2.out",
       onComplete: () => {
-        content.style.height = "auto"; // permitir reflow interno
+        content.style.height = "auto"; 
       }
     });
 
     const indicator = card.querySelector(".evento-toggle-indicator");
     if (indicator) indicator.textContent = "−";
 
-    // pequeñas animaciones internas (opcional)
+    // pequeñas animaciones internas
     const img = card.querySelector(".evento-img");
     const texto = card.querySelector(".evento-texto");
     const iframe = card.querySelector(".evento-video iframe");
@@ -114,7 +115,7 @@ function setupEventos() {
     if (texto) gsap.fromTo(texto, {y: 8, opacity: 0}, {y:0, opacity:1, duration: 0.45, delay: 0.05});
     if (iframe) gsap.fromTo(iframe, {y: 10, opacity: 0}, {y:0, opacity:1, duration: 0.55, delay: 0.08});
 
-    // Centrar el card en pantalla para que usuario vea contenido
+    // Centrar el card en pantalla
     setTimeout(() => {
       card.scrollIntoView({behavior: "smooth", block: "center"});
     }, 200);
@@ -124,9 +125,7 @@ function setupEventos() {
     const header = card.querySelector(".evento-header");
     
     const toggle = (e) => {
-      e && e.preventDefault && e.preventDefault(); // Prevenir acción por defecto
-      
-      // CLAVE: Detener la propagación del evento para evitar eventos fantasmas
+      e && e.preventDefault && e.preventDefault(); 
       e && e.stopPropagation && e.stopPropagation(); 
 
       if (card.classList.contains("open")) closeCard(card);
