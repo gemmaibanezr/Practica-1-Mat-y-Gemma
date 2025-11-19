@@ -1,125 +1,110 @@
-// ==========================
-//  MENÚ HAMBURGUESA
-// ==========================
-$(document).ready(function () {
-    const $hamburger = $('#hamburger');
-    const $menu = $('#menu-overlay');
+document.addEventListener("DOMContentLoaded", () => {
 
-    if ($hamburger.length && $menu.length) {
-        $hamburger.on('click', function () {
-            $menu.toggleClass('active');
+    // ==========================
+    //  MENÚ HAMBURGUESA
+    // ==========================
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu-overlay");
+
+    if (hamburger && menu) {
+        hamburger.addEventListener("click", () => {
+            menu.classList.toggle("active");
         });
     }
+
+
 
     // ==========================
     //  CURSOR
     // ==========================
-    const $cursor = $("#cursor");
-    if ($cursor.length) {
-        $(document).on("mousemove", function (e) {
-            $cursor.css({
-                left: e.clientX,
-                top: e.clientY
-            });
+    const cursor = document.getElementById("cursor");
+
+    if (cursor) {
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
         });
     }
 
 
-        // ==========================
-    // ESTELA +
-    // ==========================
-const plus = document.getElementById("plus-zigzag");
-const canvas = document.getElementById("trail-canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let x = canvas.width / 2;
-let y = canvas.height / 2;
-let direction = 1;
-let speed = 2;
-let amplitude = canvas.height / 2 - 100; 
-let angle = 0;
-
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-// Guardamos el modo original
-ctx.globalCompositeOperation = "source-over";
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    //  BORRADO SUAVE SIN COLOR — totalmente transparente
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Volvemos al modo normal para dibujar la estela
-    ctx.globalCompositeOperation = "lighter";
-
-    angle += 0.03;
-y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
-    x += speed * direction;
-
-    if (x > canvas.width - 50 || x < 0) {
-        direction *= -1;
-    }
-
-    // Estela luminosa sin pintar fondo
-    ctx.fillStyle = "#FF6037";
-    ctx.shadowBlur = 25;
-    ctx.shadowColor = "#F82524";
-
-    ctx.beginPath();
-    ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Mover el símbolo +
-    plus.style.transform = `translate(${x}px, ${y}px)`;
-}
-
-animate();
-
 
 // ==========================
-    //  AVISO MÚSICA VENTANA MODAL + MÚSICA HOVER
-    // ==========================
-const hoverSound = document.getElementById("hover-sound");
-const notice = document.getElementById("audio-notice");
-const okBtn = document.getElementById("audio-ok");
+//  ESTELA + ZIGZAG (solo index.html)
+// ==========================
+const canvas = document.getElementById("trail-canvas");
+const plus = document.getElementById("plus-zigzag");
 
-// Función para desbloquear audio y ocultar aviso
-function enableAudio() {
-    hoverSound.play().then(() => {
-        hoverSound.pause();
-        hoverSound.currentTime = 0;
-    }).catch(e => console.log(e));
+if (canvas && plus) {  // solo si existen
+    const ctx = canvas.getContext("2d");
 
-    // Ocultar aviso con transición
-    notice.classList.add('hidden');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let x = canvas.width / 2;
+    let y = canvas.height / 2;
+    let dir = 1;
+    let speed = 2;
+    let amplitude = canvas.height / 2 - 200;
+    let angle = 0;
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.globalCompositeOperation = "lighter";
+        angle += 0.02;
+        y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
+        x += speed * dir;
+
+        if (x > canvas.width - 50 || x < 0) dir *= -1;
+
+        ctx.fillStyle = "#FF6037";
+        ctx.shadowBlur = 25;
+        ctx.shadowColor = "#F82524";
+        ctx.beginPath();
+        ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        plus.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    animate();
 }
 
-// Evento click en el botón "¡Entendido!"
-okBtn.addEventListener('click', enableAudio);
+// ==========================
+// AVISO SONIDO (solo index.html)
+// ==========================
+const notice = document.getElementById("audio-notice");
+const okBtn = document.getElementById("audio-ok");
+const hoverSound = document.getElementById("hover-sound");
 
-// También desbloquea si el usuario hace scroll (opcional)
-window.addEventListener('click', enableAudio, { once: true });
+if (notice && okBtn && hoverSound) {
+    function enableAudio() {
+        hoverSound.play().then(() => {
+            hoverSound.pause();
+            hoverSound.currentTime = 0;
+        }).catch(() => {});
+        notice.classList.add("hidden");
+    }
 
-// Reproducir sonido al pasar sobre las tarjetas
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.play().catch(e => console.log("Audio bloqueado", e));
+    okBtn.addEventListener("click", enableAudio);
+    window.addEventListener("scroll", () => { notice.classList.add("hidden"); }, { once: true });
+    document.addEventListener("click", enableAudio, { once: true });
+
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("mouseenter", () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play().catch(() => {});
+        });
     });
-});
-
-
-
-
+}
 
 
 
@@ -127,15 +112,16 @@ document.querySelectorAll('.card').forEach(card => {
     // ==========================
     //  LOGIN
     // ==========================
-    const $form = $("form");
-    if ($form.length) {
-        $form.on("submit", function (e) {
+    const form = document.querySelector("form");
+
+    if (form) {
+        form.addEventListener("submit", e => {
             e.preventDefault();
 
-            const email = $form.find("#floatingInput").val().trim();
-            const password = $form.find("#floatingPassword").val().trim();
+            const email = document.getElementById("floatingInput").value.trim();
+            const pass = document.getElementById("floatingPassword").value.trim();
 
-            if (!email || !password) {
+            if (!email || !pass) {
                 alert("Por favor completa todos los campos.");
                 return;
             }
@@ -144,67 +130,76 @@ document.querySelectorAll('.card').forEach(card => {
         });
     }
 
-    // ==========================
-    //  Acordeón de EVENTOS música/danza
-    // ==========================
-    setupEventosTipo1();
+
 
     // ==========================
-    //  Acordeón de TEATRO (evento-card2)
+    //  ACORDEÓN TIPO 1 + 2
     // ==========================
-    setupEventosTipo2();
+    setupAcordeon(".evento-card", ".evento-header", ".evento-contenido", ".evento-toggle-indicator", false);
+    setupAcordeon(".evento-card2", ".evento-header2", ".evento-contenido2", ".evento-toggle-indicator2", true);
+
 });
 
 
-// ===============================================
-//  1) EVENTOS TIPO 1: .evento-card
-// ===============================================
-function setupEventosTipo1() {
+// =====================================================
+// FUNCIÓN GENERAL PARA AMBOS TIPOS
+// =====================================================
+function setupAcordeon(cardSelector, headerSelector, contentSelector, indicatorSelector, closeOthers) {
 
-    const cards = document.querySelectorAll(".evento-card");
+    const cards = document.querySelectorAll(cardSelector);
 
     cards.forEach(card => {
-        const header = card.querySelector(".evento-header");
+        const header = card.querySelector(headerSelector);
 
-        header.addEventListener("click", () => toggleCardTipo1(card));
-        header.addEventListener("keydown", e => {
-            if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                toggleCardTipo1(card);
+        header.addEventListener("click", () => {
+
+            if (closeOthers) {
+                document.querySelectorAll(cardSelector + ".open").forEach(other => {
+                    if (other !== card) closeAcordeon(other, contentSelector, indicatorSelector);
+                });
+            }
+
+            if (card.classList.contains("open")) {
+                closeAcordeon(card, contentSelector, indicatorSelector);
+            } else {
+                openAcordeon(card, contentSelector, indicatorSelector);
             }
         });
     });
-
 }
 
-function toggleCardTipo1(card) {
-    if (card.classList.contains("open")) closeCardTipo1(card);
-    else openCardTipo1(card);
-}
 
-function openCardTipo1(card) {
-    const content = card.querySelector(".evento-contenido");
-    const indicator = card.querySelector(".evento-toggle-indicator");
+// ============================
+// ABRIR
+// ============================
+function openAcordeon(card, contentSelector, indicatorSelector) {
+
+    const content = card.querySelector(contentSelector);
+    const indicator = card.querySelector(indicatorSelector);
 
     card.classList.add("open");
     indicator.textContent = "−";
 
     content.style.height = "auto";
-    const targetH = content.scrollHeight;
+    let fullHeight = content.scrollHeight;
     content.style.height = "0px";
 
     gsap.to(content, {
-        height: targetH,
+        height: fullHeight,
         opacity: 1,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out",
         onComplete: () => content.style.height = "auto"
     });
 }
 
-function closeCardTipo1(card) {
-    const content = card.querySelector(".evento-contenido");
-    const indicator = card.querySelector(".evento-toggle-indicator");
+// ============================
+// CERRAR
+// ============================
+function closeAcordeon(card, contentSelector, indicatorSelector) {
+
+    const content = card.querySelector(contentSelector);
+    const indicator = card.querySelector(indicatorSelector);
 
     card.classList.remove("open");
     indicator.textContent = "+";
@@ -212,74 +207,7 @@ function closeCardTipo1(card) {
     gsap.to(content, {
         height: 0,
         opacity: 0,
-        duration: 0.45,
-        ease: "power2.in"
-    });
-}
-
-
-
-// ===============================================
-//  2) EVENTOS TIPO 2 (TEATRO): .evento-card2
-// ===============================================
-function setupEventosTipo2() {
-
-    const cards = document.querySelectorAll(".evento-card2");
-
-    cards.forEach(card => {
-        const header = card.querySelector(".evento-header2");
-
-        header.addEventListener("click", () => toggleCardTipo2(card));
-        header.addEventListener("keydown", e => {
-            if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                toggleCardTipo2(card);
-            }
-        });
-    });
-}
-
-function toggleCardTipo2(card) {
-    if (card.classList.contains("open")) closeCardTipo2(card);
-    else openCardTipo2(card);
-}
-
-function openCardTipo2(card) {
-    const content = card.querySelector(".evento-contenido2");
-    const indicator = card.querySelector(".evento-toggle-indicator2");
-
-    // Cerrar otros
-    document.querySelectorAll(".evento-card2.open").forEach(c => {
-        if (c !== card) closeCardTipo2(c);
-    });
-
-    card.classList.add("open");
-    indicator.textContent = "−";
-
-    content.style.height = "auto";
-    const targetH = content.scrollHeight;
-    content.style.height = "0px";
-
-    gsap.to(content, {
-        height: targetH,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        onComplete: () => content.style.height = "auto"
-    });
-}
-
-function closeCardTipo2(card) {
-    const content = card.querySelector(".evento-contenido2");
-    const indicator = card.querySelector(".evento-toggle-indicator2");
-
-    card.classList.remove("open");
-    indicator.textContent = "+";
-
-    gsap.to(content, {
-        height: 0,
-        opacity: 0,
-        duration: 0.45,
+        duration: 0.4,
         ease: "power2.in"
     });
 }
