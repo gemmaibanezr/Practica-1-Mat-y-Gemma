@@ -21,7 +21,7 @@ html, body {
   font-family: "Zen Dots", sans-serif;
 }
 
-/* BODY WEB */
+/* BODY LOGING */
 body:not(.login-page) {
     height: 100%;
     margin: 0;
@@ -64,8 +64,10 @@ body:not(.login-page) {
   position: fixed;
   top: 0;
   left: 0;
-  height: 80px; /* ajusta según tu diseño real */
-  background: #000;
+  height: 50px; /* ajusta según tu diseño real */
+  background: rgba(249, 249, 249, 0.18);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
   color: white;
   z-index: 1200;
   right: 0;
@@ -76,14 +78,15 @@ body:not(.login-page) {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  height: 5px;
 }
 
 .logo {
-  width: 140px;
-  height: auto;
+  width: 180px;
   display: block;
   margin: 0;
   padding: 0;
+  padding-top: 50px;
 }
 
 .nav-menu {
@@ -91,6 +94,7 @@ body:not(.login-page) {
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
+  padding-bottom: 50px;
 }
 
 .nav-menu ul {
@@ -210,15 +214,16 @@ body.login-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
     gap: 50px;
+    padding-top: 500px;
+    flex-grow: 1;
 }
 
 /* Tarjetas */
 
 .card {
-    width: 330px;                 /* MÁS GRANDE */
-    padding: 55px 40px;           /* MÁS GRANDE */
+    width: 500px;                 /* MÁS GRANDE */
+    padding: 65px 50px;           /* MÁS GRANDE */
     border-radius: 28px;
 
     display: flex;
@@ -479,8 +484,8 @@ header, .header, nav, .navbar {
 .footer {
   color: white  !important;
   text-align: center;
-  padding: 20px 10px;
-  margin: 100px;
+  padding: 40px 10px;
+  margin-top: auto;
 }
 
 
@@ -495,6 +500,7 @@ header, .header, nav, .navbar {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  min-height: 100%;
 }
 
 .footer-links a {
