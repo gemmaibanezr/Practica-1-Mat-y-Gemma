@@ -575,6 +575,12 @@ header, .header, nav, .navbar {
   padding: 0; /* horizontal padding */
 }
 
+.evento-texto2:hover {
+    color: rgba(255, 204, 0, 0.703);
+    transform: scale(1.005) translateY(-1px); 
+    cursor: default;
+}
+
 /* FOOTER */
 .footer {
   color: white  !important;
