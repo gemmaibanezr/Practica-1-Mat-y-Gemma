@@ -79,32 +79,37 @@ if (canvas && plus) {  // solo si existen
 }
 
 // ==========================
-// AVISO SONIDO (solo index.html)
+// AVISO SONIDO SOLO INDEX.HTML
 // ==========================
 const notice = document.getElementById("audio-notice");
 const okBtn = document.getElementById("audio-ok");
 const hoverSound = document.getElementById("hover-sound");
 
 if (notice && okBtn && hoverSound) {
+
+    // Revisar si ya lo vio antes
+    const firstVisit = !localStorage.getItem("audioEnabled");
+
+    if (firstVisit) {
+        notice.classList.remove("hidden"); // Mostrar aviso la primera vez
+    } else {
+        notice.classList.add("hidden"); // Ocultar si ya lo vio
+    }
+
     function enableAudio() {
         hoverSound.play().then(() => {
             hoverSound.pause();
             hoverSound.currentTime = 0;
         }).catch(() => {});
+
         notice.classList.add("hidden");
+        localStorage.setItem("audioEnabled", "true"); // Guardar que ya activó
     }
 
     okBtn.addEventListener("click", enableAudio);
-    window.addEventListener("scroll", () => { notice.classList.add("hidden"); }, { once: true });
     document.addEventListener("click", enableAudio, { once: true });
-
-    document.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("mouseenter", () => {
-            hoverSound.currentTime = 0;
-            hoverSound.play().catch(() => {});
-        });
-    });
 }
+
 
 
 
