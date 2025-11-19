@@ -40,7 +40,7 @@ html, body {
     font-family: "Zen Dots", sans-serif;
     font-size: 1.5rem;
     transition: opacity 0.5s ease;
-    cursor: default; /* 🔹 Permite que el cursor se vea en el modal */
+    cursor: default; /*  Permite que el cursor se vea en el modal */
 }
 
 #audio-notice.hidden {
@@ -278,8 +278,8 @@ body.login-page {
     z-index: -1; /*  debajo del contenido */
 
     text-shadow: 
-        0 0 10px #ff0088,
-        0 0 20px #ff0088,
+        0 0 10px #F82524,
+        0 0 20px #FF6037,
         0 0 35px #00aaff;
 }
 
