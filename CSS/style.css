@@ -536,7 +536,7 @@ header, .header, nav, .navbar {
   cursor: pointer;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
-  background: linear-gradient(90deg, rgba(255,77,210,0.04), rgba(255, 204, 0, 0.28));
+  background: linear-gradient(90deg, rgba(255,77,210,0.04), rgba(255, 204, 0, 0.065));
 }
 .evento-header2 h3 {
   margin: 0;
