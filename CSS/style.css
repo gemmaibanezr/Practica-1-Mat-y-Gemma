@@ -209,6 +209,36 @@ body.login-page {
   color: #ffffff  !important;
 }
 
+/* ESTELA + */
+/* Canvas para la estela - ahora debajo del diseño */
+#trail-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1; /*  lo coloca detrás de todo */
+}
+
+/* Símbolo + flotante - también debajo del diseño */
+#plus-zigzag {
+    position: fixed;
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+
+    z-index: -1; /*  debajo del contenido */
+
+    text-shadow: 
+        0 0 10px #ff0088,
+        0 0 20px #ff0088,
+        0 0 35px #00aaff;
+}
+
+
+
 /* Imagen superior izquierda */
 .tipo-imagen {
     position: relative;
@@ -217,7 +247,7 @@ body.login-page {
     justify-content: flex-start;  /* izquierda */
     padding-top: 100px;           /* separación desde la cabecera */
     padding-left: 80px;           /* separación lateral */
-    margin-bottom: -200px;        /* acerca la imagen a las tarjetas */
+    margin-bottom: -20px;        /* acerca la imagen a las tarjetas */
     z-index: 2;
 }
 

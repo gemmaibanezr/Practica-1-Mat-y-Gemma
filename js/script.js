@@ -24,6 +24,68 @@ $(document).ready(function () {
         });
     }
 
+
+        // ==========================
+    // ESTELA +
+    // ==========================
+const plus = document.getElementById("plus-zigzag");
+const canvas = document.getElementById("trail-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+let direction = 1;
+let speed = 2;
+let amplitude = canvas.height / 2 - 100; 
+let angle = 0;
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Guardamos el modo original
+ctx.globalCompositeOperation = "source-over";
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    //  BORRADO SUAVE SIN COLOR — totalmente transparente
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Volvemos al modo normal para dibujar la estela
+    ctx.globalCompositeOperation = "lighter";
+
+    angle += 0.03;
+y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
+    x += speed * direction;
+
+    if (x > canvas.width - 50 || x < 0) {
+        direction *= -1;
+    }
+
+    // Estela luminosa sin pintar fondo
+    ctx.fillStyle = "rgba(255, 0, 150, 1)";
+    ctx.shadowBlur = 25;
+    ctx.shadowColor = "#00aaff";
+
+    ctx.beginPath();
+    ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mover el símbolo +
+    plus.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+animate();
+
+
+
     // ==========================
     //  LOGIN
     // ==========================
