@@ -85,6 +85,44 @@ y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
 animate();
 
 
+// ==========================
+    //  AVISO MÚSICA VENTANA MODAL + MÚSICA HOVER
+    // ==========================
+const hoverSound = document.getElementById("hover-sound");
+const notice = document.getElementById("audio-notice");
+const okBtn = document.getElementById("audio-ok");
+
+// Función para desbloquear audio y ocultar aviso
+function enableAudio() {
+    hoverSound.play().then(() => {
+        hoverSound.pause();
+        hoverSound.currentTime = 0;
+    }).catch(e => console.log(e));
+
+    // Ocultar aviso con transición
+    notice.classList.add('hidden');
+}
+
+// Evento click en el botón "¡Entendido!"
+okBtn.addEventListener('click', enableAudio);
+
+// También desbloquea si el usuario hace scroll (opcional)
+window.addEventListener('scroll', enableAudio, { once: true });
+
+// Reproducir sonido al pasar sobre las tarjetas
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(e => console.log("Audio bloqueado", e));
+    });
+});
+
+
+
+
+
+
+
 
     // ==========================
     //  LOGIN

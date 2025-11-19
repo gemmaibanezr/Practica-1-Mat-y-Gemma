@@ -21,6 +21,52 @@ html, body {
   font-family: "Zen Dots", sans-serif;
 }
 
+/* VENTANA AVISO */
+#audio-notice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    text-align: center;
+    padding: 20px;
+    font-family: "Zen Dots", sans-serif;
+    font-size: 1.5rem;
+    transition: opacity 0.5s ease;
+    cursor: default; /* 🔹 Permite que el cursor se vea en el modal */
+}
+
+#audio-notice.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#audio-notice button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    background: #ff4dd2;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#audio-notice button:hover {
+    transform: scale(1.1);
+    background: #ff77c0;
+}
+
+
+
 /* BODY LOGING */
 body:not(.login-page) {
     height: 100%;
