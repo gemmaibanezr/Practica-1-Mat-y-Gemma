@@ -430,8 +430,9 @@ header, .header, nav, .navbar {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px !important;
+  padding: 14px 16px;
   user-select: none;
+  border-radius: 12px;
   cursor: pointer;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
@@ -450,7 +451,8 @@ header, .header, nav, .navbar {
   color: rgba(255, 204, 0);
 }
 
-.evento-card2.open .evento-header {
+.evento-card2.open .evento-header2 {
+  border-radius: 12px 12px 0 0;
   background: linear-gradient(90deg, rgba(255,77,210,0.09), rgba(255,204,0,0.06));
 }
 
@@ -458,7 +460,7 @@ header, .header, nav, .navbar {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: default;
   transition: transform .18s ease;
   box-shadow: 0 6px 20px rgba(0,0,0,0.45);
@@ -469,7 +471,7 @@ header, .header, nav, .navbar {
 .evento-contenido2 {
   height: 0;
   opacity: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 0; /* horizontal padding */
 }
 
