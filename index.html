@@ -10,7 +10,15 @@
 <link rel="stylesheet" href="CSS/style.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
+
 <body>
+
+  <!-- Aviso de sonido -->
+<div id="audio-notice">
+  <p>Haz click en cualquier parte de la página para habilitar el sonido al pasar el cursor sobre las tarjetas.</p>
+  <button id="audio-ok">¡Entendido!</button>
+</div>
+
     <div id="cursor"></div>
     <!-- MENÚ -->
   <header class="header">
@@ -35,8 +43,21 @@
     </nav>
   </header>
 
+  <!-- Símbolo + en zigzag -->
+<div id="plus-zigzag">+</div>
+<canvas id="trail-canvas"></canvas>
+
+<script src="js/script.js"></script>
+
+
+<div class="tipo-imagen">
+    <img src="media/img/extra/foto_cultura.png" alt="Imagen destacada">
+</div>
+
+
 
 <div class="container">
+
 
     <div class="card danza">
         <span>+</span>
@@ -79,5 +100,7 @@
     <div id="plus">+</div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
+    <audio id="hover-sound" src="media/audio/swanlake.m4a" preload="auto"></audio>
+
 </body>
 </html>
