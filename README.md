@@ -15,7 +15,7 @@ Marcela es uno de los personajes más célebres de Cervantes. De la mano de tres
 --------------------------------------------------------------------------------------------------
 
 Personas, lugares y cosas --> Protagonizada por Irene Escolar.
-Desde el 25 de noviembre hasta el 11 de enero de 2026 - Sala Principal del teatro español
+Desde el 25 de noviembre hasta el 11 de enero de 2026 - Sala Principal del Teatro Español
 Precio de las entradas: entre 6 y 22€
 Duración: 140 minutos (con descanso)
 
@@ -27,7 +27,7 @@ Más breve: Emma, una actriz que se siente identificada con su papel en La gavio
 
 --------------------------------------------------------------------------------------------------
 
-La mujer rota --> Protagonizada por Anabel alonso y dirigida por Heidi Steinhardt
+La mujer rota --> Protagonizada por Anabel Alonso y dirigida por Heidi Steinhardt
 Hasta el 20 de noviembre, de martes a domingo a las 19:00, en el Teatro Infanta Isabel
 Precio: desde 20 €
 Duración: 90 Minutos
