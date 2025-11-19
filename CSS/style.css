@@ -581,6 +581,9 @@ header, .header, nav, .navbar {
     cursor: default;
 }
 
+.evento-card2:hover { transform: translateY(-4px); }
+
+
 /* FOOTER */
 .footer {
   color: white  !important;
