@@ -70,9 +70,9 @@ y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
     }
 
     // Estela luminosa sin pintar fondo
-    ctx.fillStyle = "rgba(255, 0, 150, 1)";
+    ctx.fillStyle = "#FF6037";
     ctx.shadowBlur = 25;
-    ctx.shadowColor = "#00aaff";
+    ctx.shadowColor = "#F82524";
 
     ctx.beginPath();
     ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
@@ -107,7 +107,7 @@ function enableAudio() {
 okBtn.addEventListener('click', enableAudio);
 
 // También desbloquea si el usuario hace scroll (opcional)
-window.addEventListener('scroll', enableAudio, { once: true });
+window.addEventListener('click', enableAudio, { once: true });
 
 // Reproducir sonido al pasar sobre las tarjetas
 document.querySelectorAll('.card').forEach(card => {
