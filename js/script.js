@@ -140,4 +140,24 @@ function setupEventos() {
       }
     });
   });
+
+  cards.forEach(card => {
+    const header = card.querySelector(".evento-header2");
+    
+    const toggle = (e) => {
+      e && e.preventDefault && e.preventDefault(); 
+      e && e.stopPropagation && e.stopPropagation(); 
+
+      if (card.classList.contains("open")) closeCard(card);
+      else openCard(card);
+    };
+    
+    header.addEventListener("click", toggle);
+    header.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle(e);
+      }
+    });
+  });
 }

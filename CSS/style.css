@@ -424,7 +424,54 @@ header, .header, nav, .navbar {
     text-align: justify;
 }
 
+/* TEATRO */
+/* Header (actúa como botón) */
+.evento-header2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px !important;
+  user-select: none;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(90deg, rgba(255,77,210,0.04), rgba(255, 204, 0, 0.28));
+}
+.evento-header2 h3 {
+  margin: 0;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.1;
+}
+.evento-toggle-indicator2 {
+  margin-left: auto;
+  font-size: 1.25rem;
+  color: rgba(255, 204, 0);
+}
 
+.evento-card2.open .evento-header {
+  background: linear-gradient(90deg, rgba(255,77,210,0.09), rgba(255,204,0,0.06));
+}
+
+.evento-card2 {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform .18s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  position: relative; 
+  z-index: 1;
+}
+
+.evento-contenido2 {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0; /* horizontal padding */
+}
 
 /* FOOTER */
 .footer {
