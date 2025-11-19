@@ -209,14 +209,34 @@ body.login-page {
   color: #ffffff  !important;
 }
 
+/* Imagen superior izquierda */
+.tipo-imagen {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;  /* izquierda */
+    padding-top: 100px;           /* separación desde la cabecera */
+    padding-left: 80px;           /* separación lateral */
+    margin-bottom: -200px;        /* acerca la imagen a las tarjetas */
+    z-index: 2;
+}
+
+.tipo-imagen img {
+    width: 800px;          /* tamaño similar a las cards */
+    height: auto;
+    border-radius: 28px;   /* igual que las tarjetas */
+    object-fit: cover;
+}
+
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 50px;
-    padding-top: 500px;
+    gap: 100px;
+    padding-top: 100px;
     flex-grow: 1;
+    padding-bottom: 100px;
 }
 
 /* Tarjetas */
@@ -252,7 +272,6 @@ body.login-page {
 }
 
 /* Alineación específica por tarjeta */
-
 .danza {
     align-self: flex-end;
     background-color: rgba(168, 72, 42, 0.40);  /* más transparente */
