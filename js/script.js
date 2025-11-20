@@ -28,17 +28,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// ==========================
-//  ESTELA + ZIGZAG (solo index.html)
-// ==========================
-const canvas = document.getElementById("trail-canvas");
-const plus = document.getElementById("plus-zigzag");
+// =========================
+// ESTELA + ZIGZAG RESPONSIVA
+// =========================
+if (document.getElementById("plus-zigzag") && document.getElementById("trail-canvas")) {
 
-if (canvas && plus) {  // solo si existen
+    const plus = document.getElementById("plus-zigzag");
+    const canvas = document.getElementById("trail-canvas");
     const ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
     let x = canvas.width / 2;
     let y = canvas.height / 2;
@@ -47,22 +52,19 @@ if (canvas && plus) {  // solo si existen
     let amplitude = canvas.height / 2 - 200;
     let angle = 0;
 
-    window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
     function animate() {
         requestAnimationFrame(animate);
+
+        // Borrado gradual
         ctx.globalCompositeOperation = "destination-out";
         ctx.fillStyle = "rgba(0,0,0,0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.globalCompositeOperation = "lighter";
+
         angle += 0.02;
         y = canvas.height / 2 + Math.sin(angle * 2) * amplitude;
         x += speed * dir;
-
         if (x > canvas.width - 50 || x < 0) dir *= -1;
 
         ctx.fillStyle = "#FF6037";
@@ -72,11 +74,13 @@ if (canvas && plus) {  // solo si existen
         ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
         ctx.fill();
 
+        // Actualiza posición del +
         plus.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     animate();
 }
+
 
 // ==========================
 // AVISO SONIDO (solo index.html)

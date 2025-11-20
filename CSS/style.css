@@ -743,6 +743,58 @@ header, .header, nav, .navbar {
   }
 }
 
+/* =========================
+   FOTO DESTACADA RESPONSIVA (alineada a la izquierda)
+   ========================= */
+.tipo-imagen {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;  /* izquierda */
+    padding-top: 100px;
+    padding-left: 80px;          /* separación lateral */
+    margin-bottom: -20px;
+    z-index: 2;
+}
+
+.tipo-imagen img {
+    width: 80%;            /* ocupa 80% del contenedor */
+    max-width: 800px;      /* nunca supera los 800px */
+    height: auto;          /* mantiene proporción */
+    border-radius: 28px;
+    object-fit: cover;
+}
+
+/* =========================
+   ESTELA + ZIGZAG (tamaño original)
+   ========================= */
+#plus-zigzag {
+    position: fixed;
+    font-size: 70px;       /* tamaño original */
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+    z-index: -1;
+    text-shadow: 
+        0 0 10px #F82524,
+        0 0 20px #FF6037,
+        0 0 35px #00aaff;
+    transition: transform 0.05s linear;
+}
+
+/* Canvas de la estela */
+#trail-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
 
 /* ===== TELÓN ===== */
 #telon-container {
