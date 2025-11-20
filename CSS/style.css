@@ -166,8 +166,8 @@ body:not(.login-page) {
 }
 
 /* Hover colores individuales */
-.nav-menu li:nth-child(1) a:hover { color: #FF6037; } /* +danza */
-.nav-menu li:nth-child(2) a:hover { color: #F82524; } /* +música */
+.nav-menu li:nth-child(1) a:hover { color: #F82524; } /* +danza */
+.nav-menu li:nth-child(2) a:hover { color: #ff6037; } /* +música */
 .nav-menu li:nth-child(3) a:hover { color: #ECECDC; } /* +teatro */
 .nav-menu li:nth-child(4) a:hover { color: #ffcc00; } /* Iniciar sesión */
 
