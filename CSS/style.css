@@ -375,6 +375,68 @@ body.login-page {
     font-weight: 600;
 }
 
+/* ========================
+   OVERLAY TARJETAS
+   ======================== */
+.card {
+    position: relative;   /* necesario para overlay */
+    overflow: hidden;
+}
+
+/* Estilo del overlay */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transform: translateY(20px); /* efecto de aparición desde abajo */
+}
+
+/* Mostrar overlay al hover */
+.card:hover .card-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Títulos y textos dentro del overlay */
+.card-overlay h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-overlay p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Botón del overlay */
+.overlay-btn {
+    background: #ff6037;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.overlay-btn:hover {
+    background: #ff2c0f;
+}
+
+
+
 /* ===== CONTENEDOR DEL TELÓN ===== */
 #telon-container {
     position: fixed;
