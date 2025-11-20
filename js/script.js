@@ -249,3 +249,42 @@ function iniciarAudioGlobal() {
         document.addEventListener("click", () => bgMusic.play(), { once: true });
     });
 }
+
+
+// ===== TELÓN — SE ABRE AL HACER SCROLL UNA SOLA VEZ =====
+
+const telonContainer = document.getElementById("telon-container");
+const telonSound = document.getElementById("sound-telon");
+
+let telonAbierto = false;
+
+function abrirTelon() {
+
+    if (telonAbierto) return;
+    telonAbierto = true;
+
+    // Sonido sincronizado
+    if (telonSound) {
+        telonSound.currentTime = 0;
+        telonSound.play().catch(() => {});
+    }
+
+    // Animación de apertura
+    telonContainer.classList.add("telon-open");
+
+    // Después de abrirse, se oculta
+    setTimeout(() => {
+        telonContainer.style.display = "none";
+    }, 1500);
+}
+
+// Detectar primer scroll REAL
+window.addEventListener("scroll", abrirTelon, { once: true });
+
+// Extra: si el usuario hace clic o mueve el ratón antes del scroll,
+// también se abre (por si no desplaza enseguida)
+window.addEventListener("mousemove", abrirTelon, { once: true });
+window.addEventListener("click", abrirTelon, { once: true });
+
+
+

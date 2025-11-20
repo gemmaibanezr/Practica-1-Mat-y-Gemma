@@ -375,6 +375,29 @@ body.login-page {
     font-weight: 600;
 }
 
+/* ===== CONTENEDOR DEL TELÓN ===== */
+#telon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9999; /* por encima de todo */
+    pointer-events: none; /* no molesta al usuario */
+    display: flex;
+}
+
+
+/* Contenido */
+#page-content {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px;
+}
+
+
+
 /* MÚSICA */
 
 header, .header, nav, .navbar {
@@ -657,3 +680,49 @@ header, .header, nav, .navbar {
     font-size: 3.5rem;
   }
 }
+
+
+/* ===== TELÓN ===== */
+#telon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 999999;
+    display: flex;
+    pointer-events: none;
+}
+
+.telon {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, #7a0000, #b30000, #7a0000);
+    background-size: 200% 200%;
+    animation: telon-brillo 6s ease-in-out infinite;
+    transition: transform 1.2s ease-out;
+}
+
+.telon-left {
+    transform: translateX(0);
+}
+
+.telon-right {
+    transform: translateX(0);
+}
+
+.telon-open .telon-left {
+    transform: translateX(-120%);
+}
+
+.telon-open .telon-right {
+    transform: translateX(120%);
+}
+
+@keyframes telon-brillo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
