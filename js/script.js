@@ -274,7 +274,11 @@ function abrirTelon() {
     }
 
     // Animación de apertura
+    const telonContainer = document.getElementById("telon-container");
+if (telonContainer) {
     telonContainer.classList.add("telon-open");
+}
+
 
     // Después de abrirse, se oculta
     setTimeout(() => {
