@@ -211,3 +211,41 @@ function closeAcordeon(card, contentSelector, indicatorSelector) {
         ease: "power2.in"
     });
 }
+
+// ==========================
+//  AVISO + AUDIO GLOBAL
+// ==========================
+const audioNotice = document.getElementById("audio-notice");
+const audioOk = document.getElementById("audio-ok");
+const bgMusic = document.getElementById("bg-music"); // tu audio global
+
+// Ocultar aviso si ya se aceptó antes
+if (localStorage.getItem("audioActivated") === "true") {
+    if (audioNotice) audioNotice.classList.add("hidden");
+    iniciarAudioGlobal();
+} else {
+    // Mostrar aviso solo primera vez
+    if (audioNotice) audioNotice.classList.remove("hidden");
+}
+
+// Cuando el usuario acepta ("Entendido")
+if (audioOk) {
+    audioOk.addEventListener("click", () => {
+        localStorage.setItem("audioActivated", "true");
+        if (audioNotice) audioNotice.classList.add("hidden");
+        iniciarAudioGlobal();
+    });
+}
+
+// Función que inicia el audio global sin reiniciarlo al hacer hover
+function iniciarAudioGlobal() {
+    if (!bgMusic) return;
+
+    bgMusic.volume = 1.0;
+
+    // intentar reproducir
+    bgMusic.play().catch(() => {
+        // si falla porque no hay interacción, se habilita con 1 click
+        document.addEventListener("click", () => bgMusic.play(), { once: true });
+    });
+}
