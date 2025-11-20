@@ -459,6 +459,23 @@ body.login-page {
 }
 
 
+/* DANZA */
+.video-responsive {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Ajusta el tamaño máximo */
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+.video-responsive video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
 
 /* MÚSICA */
 

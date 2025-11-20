@@ -111,6 +111,36 @@ if (notice && okBtn && hoverSound) {
 }
 
 
+// ==========================
+// SONIDO VÍDEO DANZA
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const video = document.getElementById("video-danza");
+
+    // Solo funciona en danza.html
+    if (!video) return;
+
+    function enableVideoSound() {
+        video.muted = false;
+
+        video.play()
+            .then(() => {
+                console.log("🎵 Video con sonido activado por clic");
+            })
+            .catch(err => {
+                console.warn("No se pudo reproducir:", err);
+            });
+
+        document.removeEventListener("click", enableVideoSound);
+    }
+
+    // Detectar PRIMER clic
+    document.addEventListener("click", enableVideoSound, { once: true });
+});
+
+
+
 
 
     // ==========================
