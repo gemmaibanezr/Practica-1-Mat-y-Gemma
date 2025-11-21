@@ -338,6 +338,18 @@ body.login-page {
 
     transition: all 0.35s ease;
 }
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
 
 /* Hover con borde brillante */
 .card:hover {
@@ -857,3 +869,22 @@ header, .header, nav, .navbar {
     100% { background-position: 0% 50%; }
 }
 
+/* CENTRAR TARJETAS EN MÓVIL */
+@media (max-width: 768px) {
+    .container {
+        align-items: center !important;
+    }
+
+    .card {
+        width: 90% !important;
+        max-width: 420px;
+    }
+
+    .danza, .musica, .teatro {
+        align-self: center !important;
+    }
+
+    .container {
+        gap: 60px !important;
+    }
+}

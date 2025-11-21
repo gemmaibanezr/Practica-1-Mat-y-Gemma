@@ -325,3 +325,34 @@ window.addEventListener("click", abrirTelon, { once: true });
 
 
 
+// Slider por clic en móvil
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth <= 768) {
+        const cards = document.querySelectorAll(".card");
+        let index = 0;
+
+        // estilo slider
+        const container = document.querySelector(".container");
+        container.style.display = "flex";
+        container.style.flexDirection = "row";
+        container.style.overflowX = "hidden";
+        container.style.scrollBehavior = "smooth";
+
+        // cada card = ancho pantalla
+        cards.forEach(card => {
+            card.style.minWidth = "100%";
+        });
+
+        // clic avanza
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                index++;
+                if (index >= cards.length) index = 0;
+                container.scrollTo({
+                    left: index * container.clientWidth,
+                    behavior: "smooth"
+                });
+            });
+        });
+    }
+});
