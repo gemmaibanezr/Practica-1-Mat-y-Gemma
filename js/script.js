@@ -74,7 +74,7 @@ if (document.getElementById("plus-zigzag") && document.getElementById("trail-can
         ctx.arc(x + 20, y + 20, 8, 0, Math.PI * 2);
         ctx.fill();
 
-        // Actualiza posición del +
+        
         plus.style.transform = `translate(${x}px, ${y}px)`;
     }
 
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.removeEventListener("click", enableVideoSound);
     }
 
-    // Detectar PRIMER clic
+   
     document.addEventListener("click", enableVideoSound, { once: true });
 });
 
@@ -251,18 +251,18 @@ function closeAcordeon(card, contentSelector, indicatorSelector) {
 // ==========================
 const audioNotice = document.getElementById("audio-notice");
 const audioOk = document.getElementById("audio-ok");
-const bgMusic = document.getElementById("bg-music"); // tu audio global
+const bgMusic = document.getElementById("bg-music"); 
 
 // Ocultar aviso si ya se aceptó antes
 if (localStorage.getItem("audioActivated") === "true") {
     if (audioNotice) audioNotice.classList.add("hidden");
     iniciarAudioGlobal();
 } else {
-    // Mostrar aviso solo primera vez
+   
     if (audioNotice) audioNotice.classList.remove("hidden");
 }
 
-// Cuando el usuario acepta ("Entendido")
+
 if (audioOk) {
     audioOk.addEventListener("click", () => {
         localStorage.setItem("audioActivated", "true");
@@ -279,7 +279,7 @@ function iniciarAudioGlobal() {
 
     // intentar reproducir
     bgMusic.play().catch(() => {
-        // si falla porque no hay interacción, se habilita con 1 click
+       
         document.addEventListener("click", () => bgMusic.play(), { once: true });
     });
 }
@@ -297,7 +297,7 @@ function abrirTelon() {
     if (telonAbierto) return;
     telonAbierto = true;
 
-    // Sonido sincronizado
+
     if (telonSound) {
         telonSound.currentTime = 0;
         telonSound.play().catch(() => {});
@@ -310,7 +310,7 @@ if (telonContainer) {
 }
 
 
-    // Después de abrirse, se oculta
+
     setTimeout(() => {
         telonContainer.style.display = "none";
     }, 1500);
@@ -319,8 +319,7 @@ if (telonContainer) {
 // Detectar primer scroll REAL
 window.addEventListener("scroll", abrirTelon, { once: true });
 
-// Extra: si el usuario hace clic o mueve el ratón antes del scroll,
-// también se abre (por si no desplaza enseguida)
+
 window.addEventListener("mousemove", abrirTelon, { once: true });
 window.addEventListener("click", abrirTelon, { once: true });
 
