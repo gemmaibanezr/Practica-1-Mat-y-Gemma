@@ -15,10 +15,16 @@
 <body>
 
   <!-- Aviso de sonido -->
-<div id="audio-notice">
-  <p>Haz click en cualquier parte de la página para habilitar el sonido al pasar el cursor sobre las tarjetas.</p>
-  <button id="audio-ok">¡Entendido!</button>
+<!-- AVISO DE AUDIO -->
+<div id="audio-notice" class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center p-3" style="background: rgba(0,0,0,0.85); z-index: 5000; font-family: 'Zen Dots', sans-serif; font-size: 1.5rem; cursor: default;">
+    <p class="mb-3">
+        Haz click en cualquier parte de la página para habilitar el sonido al pasar el cursor sobre las tarjetas.
+    </p>
+    <button id="audio-ok" class="btn btn-primary btn-lg px-4 py-2" style="background: #ff4dd2; border: none; border-radius: 12px; transition: transform 0.2s ease, background 0.2s ease;">
+        ¡Entendido!
+    </button>
 </div>
+
 
     <div id="cursor"></div>
     <!-- MENÚ -->
