@@ -306,7 +306,7 @@ body.login-page {
 }
 
 
-.container {
+.container-home {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -618,6 +618,27 @@ body.login-page {
         flex-direction: column;
     }
 }
+
+
+
+
+/* CAPTION GLASS EFFECT */
+.glass-overlay-custom {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.glass-overlay-custom h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.glass-overlay-custom p {
+    font-size: 1rem;
+}
+
 
 
 
