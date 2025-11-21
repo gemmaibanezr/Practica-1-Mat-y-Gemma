@@ -546,14 +546,14 @@ body.login-page {
         writing-mode: horizontal-tb;
         transform: rotate(0);
         text-align: center;
-        width: 100%;      /* Ajusta al ancho del contenedor */
-        overflow-wrap: break-word; /* Evita que el texto sobresalga */
+        width: 100%;      
+        overflow-wrap: break-word;
     }
 
     .about-vertical h1 {
-        font-size: 6vw;   /* Tamaño relativo a la pantalla */
-        max-width: 100%;  /* Nunca más ancho que el contenedor */
-        margin: 0 auto;   /* Centrado horizontal */
+        font-size: 6vw;   
+        max-width: 100%;  
+        margin: 0 auto;   
     }
 
     .about-images-wrap {
@@ -563,7 +563,7 @@ body.login-page {
 
 
 
-/* Imagenes en fila */
+
 .about-images {
     display: flex;
     gap: 20px;
@@ -575,7 +575,7 @@ body.login-page {
     object-fit: cover;
 }
 
-/* Bloque Follow */
+
 .about-follow {
     display: flex;
     align-items: center;
