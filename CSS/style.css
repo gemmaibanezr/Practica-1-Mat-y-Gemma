@@ -350,7 +350,7 @@ body.login-page {
 /* Alineación específica por tarjeta */
 .danza {
     align-self: flex-end;
-    background-color: rgba(168, 72, 42, 0.40);  
+    background-color: #ff2b0f78;  
 }
 
 .musica {
@@ -474,6 +474,12 @@ body.login-page {
     display: block;
 }
 
+.evento-texto3:hover {
+    color: #f82424b5;
+    transform: scale(1.005) translateY(-1px); 
+    cursor: default;
+}
+
 
 
 
@@ -543,7 +549,6 @@ header, .header, nav, .navbar {
   font-size: 1.25rem;
   color: rgba(255, 96, 55);
 }
-
 
 .evento-contenido {
   height: 0;
