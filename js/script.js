@@ -87,28 +87,42 @@ if (document.getElementById("plus-zigzag") && document.getElementById("trail-can
 // ==========================
 const notice = document.getElementById("audio-notice");
 const okBtn = document.getElementById("audio-ok");
-const hoverSound = document.getElementById("hover-sound");
+const bgMusic = document.getElementById("background-audio");
 
-if (notice && okBtn && hoverSound) {
+if (notice && okBtn && bgMusic) {
+
     function enableAudio() {
-        hoverSound.play().then(() => {
-            hoverSound.pause();
-            hoverSound.currentTime = 0;
-        }).catch(() => {});
+        // Ocultar aviso
         notice.classList.add("hidden");
+
+        // Activar audio de fondo en bucle
+        bgMusic.volume = 0.6;
+        bgMusic.loop = true;
+        bgMusic.play().catch(() => {
+            // Si el navegador bloquea autoplay, reproducir al siguiente click
+            document.addEventListener("click", () => bgMusic.play(), { once: true });
+        });
+
+        // Guardar estado para que no vuelva a mostrar el aviso
+        localStorage.setItem("audioActivated", "true");
     }
 
-    okBtn.addEventListener("click", enableAudio);
-    window.addEventListener("scroll", () => { notice.classList.add("hidden"); }, { once: true });
-    document.addEventListener("click", enableAudio, { once: true });
-
-    document.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("mouseenter", () => {
-            hoverSound.currentTime = 0;
-            hoverSound.play().catch(() => {});
+    // Si ya aceptó antes, ocultar aviso y reproducir audio de fondo
+    if (localStorage.getItem("audioActivated") === "true") {
+        notice.classList.add("hidden");
+        bgMusic.volume = 0.6;
+        bgMusic.loop = true;
+        bgMusic.play().catch(() => {
+            document.addEventListener("click", () => bgMusic.play(), { once: true });
         });
-    });
+    } else {
+        okBtn.addEventListener("click", enableAudio, { once: true });
+        // También ocultar aviso al hacer click en cualquier parte
+        document.addEventListener("click", enableAudio, { once: true });
+        window.addEventListener("scroll", () => { notice.classList.add("hidden"); }, { once: true });
+    }
 }
+
 
 
 
@@ -129,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         video.play()
             .then(() => {
-                console.log("🎵 Video con sonido activado por clic");
+                console.log(" Video con sonido activado por clic");
             })
             .catch(err => {
                 console.warn("No se pudo reproducir:", err);
