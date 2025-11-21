@@ -449,6 +449,169 @@ body.login-page {
 }
 
 
+/* ========== ABOUT US SECTION ========== */
+
+/* CONTENEDOR GENERAL */
+.about-wrapper {
+    display: flex;
+    padding: 80px;
+    font-family: 'Helvetica', sans-serif;
+    color: #b8403d;
+    gap: 40px;
+}
+
+/* TEXTO VERTICAL */
+.about-vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.about-vertical h1 {
+    font-size: 150px;
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    margin: 0;
+    color: #b8403d;
+}
+
+/* CONTENIDO DERECHO */
+.about-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* TU TEXTO */
+.about-paragraph {
+    max-width: 700px;
+    font-size: 14px;
+    line-height: 1.35;
+    color: #b8403d;
+    text-align: justify;
+}
+
+/* GRID DE IMÁGENES */
+.about-images-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* IMAGEN GRANDE */
+.about-img-large img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* IMAGEN PEQUEÑA */
+.about-img-small img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* CAPTION */
+.caption {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    text-align: left;
+    color: #b8403d;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+    .about-wrapper {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .about-vertical {
+        writing-mode: horizontal-tb;
+        transform: rotate(0);
+        text-align: center;
+    }
+
+    .about-vertical h1 {
+        font-size: 70px;
+    }
+
+    .about-images-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Imagenes en fila */
+.about-images {
+    display: flex;
+    gap: 20px;
+}
+
+.about-images img {
+    width: 30%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Bloque Follow */
+.about-follow {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-follow p {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.about-follow img {
+    width: 140px;
+    border-radius: 12px;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 900px) {
+    .about-us-section {
+        flex-direction: column;
+        padding: 60px 30px;
+        text-align: center;
+    }
+
+    .about-left h1 {
+        font-size: 90px;
+        text-align: center;
+    }
+
+    .about-right {
+        width: 100%;
+        align-items: center;
+    }
+
+    .about-images {
+        flex-direction: column;
+    }
+
+    .about-images img {
+        width: 100%;
+    }
+
+    .about-follow {
+        flex-direction: column;
+    }
+}
+
+
+
 
 /* ===== CONTENEDOR DEL TELÓN ===== */
 #telon-container {
