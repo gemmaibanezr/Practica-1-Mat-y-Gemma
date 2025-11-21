@@ -92,7 +92,7 @@ const bgMusic = document.getElementById("background-audio");
 if (notice && okBtn && bgMusic) {
 
     function enableAudio() {
-        // Ocultar aviso
+    
         notice.classList.add("hidden");
 
         // Activar audio de fondo en bucle
@@ -107,7 +107,7 @@ if (notice && okBtn && bgMusic) {
         localStorage.setItem("audioActivated", "true");
     }
 
-    // Si ya aceptó antes, ocultar aviso y reproducir audio de fondo
+
     if (localStorage.getItem("audioActivated") === "true") {
         notice.classList.add("hidden");
         bgMusic.volume = 0.6;
@@ -117,7 +117,7 @@ if (notice && okBtn && bgMusic) {
         });
     } else {
         okBtn.addEventListener("click", enableAudio, { once: true });
-        // También ocultar aviso al hacer click en cualquier parte
+
         document.addEventListener("click", enableAudio, { once: true });
         window.addEventListener("scroll", () => { notice.classList.add("hidden"); }, { once: true });
     }
