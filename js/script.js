@@ -356,3 +356,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+
+// ACTIVAR AUDIO AL PULSAR "ENTENDIDO"
+document.addEventListener("DOMContentLoaded", () => {
+    const audioBtn = document.getElementById("audio-ok");
+    const audioNotice = document.getElementById("audio-notice");
+    const audio = document.getElementById("background-audio");
+
+    audio.volume = 0.6; 
+
+    audioBtn.addEventListener("click", () => {
+        audioNotice.classList.add("hidden");
+
+        
+        audio.play()
+            .catch(err => console.log("Error de reproducción:", err));
+
+
+        setTimeout(() => {
+            audioNotice.style.display = "none";
+        }, 600);
+    });
+});
+
